@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'landing',
     'authentication',
-    'dashboard'
+    'dashboard',
+    'mengelolaTim',
+    'historyRapat',
+    'listPertandingan',
 ]
 
 MIDDLEWARE = [

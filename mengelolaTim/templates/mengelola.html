@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Mengelola Tim</title>
+{% endblock meta %} {% block content %}
+
+<div class="font-bold text-center text-3xl">Mengelola Tim</div>
+
+<div class="text-xl font-bold text-center mt-2">Pemain</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">Nama Pemain</th>
+        <th scope="col" class="px-6 py-3">No HP</th>
+        <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
+        <th scope="col" class="px-6 py-3">is Captain</th>
+        <th scope="col" class="px-6 py-3">Posisi</th>
+        <th scope="col" class="px-6 py-3">NPM</th>
+        <th scope="col" class="px-6 py-3">Jenjang</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4">John</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">TRUE</td>
+        <td class="px-6 py-4">Captain</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">Undergraduate</td>
+        <td class="px-6 py-4">
+          <button class="bg-blue-400 font-bold text-center text-white p-2">
+            Make Captain
+          </button>
+          <button class="bg-red-400 font-bold text-center text-white p-2">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-6 py-4">John</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">TRUE</td>
+        <td class="px-6 py-4">Captain</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">Undergraduate</td>
+        <td class="px-6 py-4">
+          <button class="bg-blue-400 font-bold text-center text-white p-2">
+            Make Captain
+          </button>
+          <button class="bg-red-400 font-bold text-center text-white p-2">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-xl font-bold text-center mt-4">Pelatih</div>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">Nama Pelatih</th>
+        <th scope="col" class="px-6 py-3">No HP</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+        <th scope="col" class="px-6 py-3">Alamat</th>
+        <th scope="col" class="px-6 py-3">Spesialisasi</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4">Johnny</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">Johnny@example.com</td>
+        <td class="px-6 py-4">IDK St</td>
+        <td class="px-6 py-4">Captain</td>
+        <td class="px-6 py-4">
+          <button class="bg-red-400 font-bold text-center text-white p-2">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4">Josh</td>
+        <td class="px-6 py-4">123456789</td>
+        <td class="px-6 py-4">Josh@example.com</td>
+        <td class="px-6 py-4">IDK St</td>
+        <td class="px-6 py-4">Captain</td>
+        <td class="px-6 py-4">
+          <button class="bg-red-400 font-bold text-center text-white p-2">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-center">
+      <a href="player/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-yellow-700 hover:text-white">Pemain</button></a>
+      <a href="trainer/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-red-700 hover:text-white">Pelatih</button></a>
+  </div>
+
+  {% endblock content %}
+</div>

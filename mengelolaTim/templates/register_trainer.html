@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Mengelola Trainer</title>
+{% endblock meta %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4 text-center">Mengelola Pelatih</h1>
+  
+  <form class="text-center">
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="player">Pelatih</label>
+      <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="player" name="player">
+        <option value="">-- Pilih Pelatih --</option>
+        <option value="John">John</option>
+        <option value="Doe">Doe</option>
+        <option value="Jane">Jane</option>
+        <option value="Smith">Smith</option>
+        <option value="Mary">Mary</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Simpan
+      </button>
+    </div>
+  </form>
+{% endblock content %}
