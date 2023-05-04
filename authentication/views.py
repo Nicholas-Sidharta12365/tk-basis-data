@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'auth.html')
 
 def login(request):
     return render(request, 'login.html')
@@ -32,9 +32,9 @@ def register(request):
 #     return render(request, 'login.html', context)
 
 
-# def logout_user(request):
-#     logout(request)
-#     return redirect('authentication:login')
+def logout_user(request):
+    logout(request)
+    return redirect('authentication:login')
 
 # def register_user(request):
 #     form = UserCreationForm()
