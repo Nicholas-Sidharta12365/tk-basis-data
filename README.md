@@ -3,7 +3,7 @@
 ## Kelompok
 1. nama - npm 
 2. Nicholas Sidharta - 2106752294
-3. nama - npm
+3. Vinsensius Ferdinando - 2106751221
 4. nama - npm
 
 # How to Run
