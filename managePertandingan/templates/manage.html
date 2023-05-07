@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block meta %}
+<title>List Pertandingan</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="text-xl font-bold text-center mt-2">List Pertandingan Group Stage</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+        <tr>
+            <th scope="col" class="px-6 py-3">Grup</th>
+            <th scope="col" class="px-6 py-3">Tim</th>
+            <th scope="col" class="px-6 py-3">Waktu</th>
+            <th scope="col" class="px-6 py-3">Pemenang</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4" rowspan="4">A</td>
+            <td class="px-6 py-4">A VS B</td>
+            <td class="px-6 py-4">28 April 2023, 13:00</td>
+            <td class="px-6 py-4">A</td>
+            <td class="px-6 py-4">
+                <p><a href="peristiwa/">Lihat Peristiwa Tim 1</a></p>
+                <p><a href="peristiwa/">Lihat Peristiwa Tim 2</a></p>
+            </td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">C VS D</td>
+            <td class="px-6 py-4">29 April 2023, 13:00</td>
+            <td class="px-6 py-4">D</td>
+            <td class="px-6 py-4">
+                <p><a href="peristiwa/">Lihat Peristiwa Tim 1</a></p>
+                <p><a href="peristiwa/">Lihat Peristiwa Tim 2</a></p>
+            </td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">E VS F</td>
+            <td class="px-6 py-4">-5 menit</td>
+            <td class="px-6 py-4">-</td>
+            <td class="px-6 py-4">
+                <p><a href="peristiwa/">Mulai</a></p>
+            </td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">G VS H</td>
+            <td class="px-6 py-4">10 May 2023, 12:00</td>
+            <td class="px-6 py-4">-</td>
+            <td class="px-6 py-4">
+                <p>Belum waktunya</p>
+            </td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">B</td>
+            <td class="px-6 py-4">I VS J</td>
+            <td class="px-6 py-4">14 May 2023, 12:00</td>
+            <td class="px-6 py-4">-</td>
+            <td class="px-6 py-4">
+                <p>Belum waktunya</p>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
