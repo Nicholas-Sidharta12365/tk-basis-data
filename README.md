@@ -42,4 +42,15 @@ python manage.py runserver
 9. /list = display list pertandingan
 10. /history = display history rapat
 
+11. /pinjam = peminjaman stadium
+12. /pinjam/sesi = cek sesi stadium tertentu
+13. /pinjam/sesi/pesan = melakukan pemesanan stadium tertentu dan pada sesi tertentu
+
+14. /pembelian = initial page untuk membeli tiket
+15. /pembelian/waktu = pilih waktu
+16. /pembelian/waktu/pertandingan = pilih pertandingan
+17. /pembelian/waktu/pertandingan/buy = pilih jenis dan pembayaran
+
+
 N.B: Edit Navbar di /templates/base.html
+
