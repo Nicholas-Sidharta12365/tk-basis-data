@@ -29,4 +29,5 @@ urlpatterns = [
     path('manage/', include('managePertandingan.urls')),
     path('creation/', include('pembuatanPertandingan.urls')),
     path('start/', include('mulaiPertandingan.urls')),
+    path('rapat/', include('mulaiRapat.urls')),
 ]

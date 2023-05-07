@@ -56,5 +56,7 @@ python manage.py runserver
 23. /creation/add/waktu/create = form pembuatan pertandingan
 24. /start = index mulai pertandingan
 25. /start/addperistiwa = tambah peristiwa
+26. /rapat = index mulai rapat
+27. /rapat/isi = pengisian isi rapat
 N.B: Edit Navbar di /templates/base.html
 

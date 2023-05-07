@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Pengisian Rapat</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="font-bold text-center text-3xl">Rapat Pertandingan {NAMA TIM 1} vs {NAMA TIM 2}</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <form class="text-center" action="/dashboard">
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Masukkan isi rapat" id="isi" name="isi"></textarea>
+            <label for="isi" class="block text-gray-700 font-bold mb-2">Isi Rapat: </label>
+        </div>
+
+        <div class="mb-4">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Submit
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

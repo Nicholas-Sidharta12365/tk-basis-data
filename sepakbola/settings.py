@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'managePertandingan',
     'pembuatanPertandingan',
     'mulaiPertandingan',
+    'mulaiRapat',
 ]
 
 MIDDLEWARE = [
