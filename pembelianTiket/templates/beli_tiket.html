@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Pembelian Tiket</title>
+{% endblock meta %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4 text-center">Beli Tiket</h1>
+
+<form class="text-center" action="/dashboard">
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="jenisTiket">Jenis Tiket</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="jenisTiket" name="jenisTiket">
+            <option value="">-- Pilih Jenis --</option>
+            <option value="stadiumA">VIP</option>
+            <option value="stadiumB">Main East</option>
+            <option value="stadiumC">Kategori 1</option>
+            <option value="stadiumD">Kategori 2</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="pembayaran">Pembayaran</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="pembayaran" name="pembayaran">
+            <option value="">-- Pilih Pembayaran --</option>
+            <option value="stadiumA">Pembayaran 1</option>
+            <option value="stadiumB">Pembayaran 2</option>
+            <option value="stadiumC">Pembayaran 3</option>
+            <option value="stadiumD">Pembayaran 4</option>
+        </select>
+    </div>
+
+
+    <div class="mb-4">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Beli
+        </button>
+    </div>
+</form>
+
+{% endblock content %}

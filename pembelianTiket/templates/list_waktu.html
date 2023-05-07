@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Pembelian Tiket</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="text-xl font-bold text-center mt-2">List Waktu {NAMA STADIUM}</div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+        <tr>
+            <th scope="col" class="px-6 py-3">List Waktu</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">07.00 - 09.00</td>
+            <td class="px-6 py-4"><a href="pertandingan/">Next</a></td>
+        </tr>
+
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">11.00 - 13.00</td>
+            <td class="px-6 py-4"><a href="pertandingan/">Next</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

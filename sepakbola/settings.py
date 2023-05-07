@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'historyRapat',
     'listPertandingan',
     'peminjamanStadium',
+    'pembelianTiket'
 ]
 
 MIDDLEWARE = [

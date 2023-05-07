@@ -24,5 +24,6 @@ urlpatterns = [
     path('mengelola/', include('mengelolaTim.urls')),
     path('history/', include(('historyRapat.urls'))),
     path('list/', include(('listPertandingan.urls'))),
-    path('pinjam/', include('peminjamanStadium.urls'))
+    path('pinjam/', include('peminjamanStadium.urls')),
+    path('pembelian/', include('pembelianTiket.urls')),
 ]
