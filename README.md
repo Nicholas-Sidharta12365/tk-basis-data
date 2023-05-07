@@ -4,7 +4,7 @@
 1. Muhammad Alif Ilham - 2106751341
 2. Nicholas Sidharta - 2106752294
 3. Vinsensius Ferdinando - 2106751221
-4. nama - npm
+4. Bintang Pratama - 2106751373
 
 # How to Run
 1. Create venv
