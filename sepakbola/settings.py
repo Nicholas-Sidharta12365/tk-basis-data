@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'listPertandingan',
     'peminjamanStadium',
     'pembelianTiket',
-    'managePertandingan'
+    'managePertandingan',
+    'pembuatanPertandingan',
 ]
 
 MIDDLEWARE = [

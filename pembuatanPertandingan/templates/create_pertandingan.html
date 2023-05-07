@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Pembuatan Pertandingan</title>
+{% endblock meta %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4 text-center">Buat Pertandingan</h1>
+
+<form class="text-center" action="/creation">
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitUtama">Wasit Utama</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitUtama" name="wasitUtama">
+            <option value="">-- Pilih Wasit --</option>
+            <option value="wasit1">Wasit 1</option>
+            <option value="wasit2">Wasit 2</option>
+            <option value="wasit3">Wasit 3</option>
+            <option value="wasit4">Wasit 4</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu">Wasit Pembantu</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu" name="wasitPembantu">
+            <option value="">-- Pilih Wasit --</option>
+            <option value="wasit1">Wasit 1</option>
+            <option value="wasit2">Wasit 2</option>
+            <option value="wasit3">Wasit 3</option>
+            <option value="wasit4">Wasit 4</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu">Wasit Pembantu</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu" name="wasitPembantu">
+            <option value="">-- Pilih Wasit --</option>
+            <option value="wasit1">Wasit 1</option>
+            <option value="wasit2">Wasit 2</option>
+            <option value="wasit3">Wasit 3</option>
+            <option value="wasit4">Wasit 4</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitCadangan">Wasit Cadangan</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitCadangan" name="wasitCadangan">
+            <option value="">-- Pilih Wasit --</option>
+            <option value="wasit1">Wasit 1</option>
+            <option value="wasit2">Wasit 2</option>
+            <option value="wasit3">Wasit 3</option>
+            <option value="wasit4">Wasit 4</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="timSatu">Tim 1</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timSatu" name="timSatu">
+            <option value="">-- Pilih Tim --</option>
+            <option value="tim1">Tim A</option>
+            <option value="tim2">Tim B</option>
+            <option value="tim3">Tim C</option>
+            <option value="tim4">Tim D</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="timDua">Tim 2</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timDua" name="timDua">
+            <option value="">-- Pilih Tim --</option>
+            <option value="tim1">Tim A</option>
+            <option value="tim2">Tim B</option>
+            <option value="tim3">Tim C</option>
+            <option value="tim4">Tim D</option>
+        </select>
+    </div>
+
+
+    <div class="mb-4">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Submit
+        </button>
+    </div>
+</form>
+
+{% endblock content %}
