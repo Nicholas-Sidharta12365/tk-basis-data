@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block meta %}
+<title>List Waktu Stadium</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="font-bold text-center text-3xl">List Waktu Stadium {NAMA STADIUM}</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+    <tr>
+        <th scope="col" class="px-6 py-3">List Waktu</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4">17:00</td>
+        <td class="px-6 py-4">
+            <button class="bg-blue-400 font-bold text-center text-white p-2">
+                Pesan
+            </button>
+        </td>
+    </tr>
+    
+    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <td class="px-6 py-4">19:00</td>
+        <td class="px-6 py-4">
+            <button class="bg-blue-400 font-bold text-center text-white p-2">
+                Pesan
+            </button>
+        </td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+
+{% endblock content %}
