@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Tambah Peristiwa</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="font-bold text-center text-3xl">Pilih Peristiwa Tim {NAMA TIM}</div>
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <form class="text-center">
+    
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            >
+            <tr>
+                <th scope="col" class="px-6 py-3">Nama Pemain</th>
+                <th scope="col" class="px-6 py-3">Peristiwa</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="pemainSatu">Pemain Satu</label>
+                        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="pemainSatu" name="pemainSatu">
+                            <option value="">-- Pilih Pemain --</option>
+                            <option value="none">None</option>
+                            <option value="pemain1">Pemain 1</option>
+                            <option value="pemain2">Pemain 2</option>
+                            <option value="pemain3">Pemain 3</option>
+                            <option value="pemain4">Pemain 4</option>
+                        </select>
+                    </div>
+                </td>
+
+                <td class="px-6 py-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="peristiwaSatu">Peristiwa Satu</label>
+                        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="peristiwaSatu" name="peristiwaSatu">
+                            <option value="">-- Pilih Peristiwa --</option>
+                            <option value="none">None</option>
+                            <option value="kartukuning">Kartu Kuning</option>
+                            <option value="kartumerah">Kartu Merah</option>
+                            <option value="assist">Assist</option>
+                            <option value="gol">Gol</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="pemainDua">Pemain Dua</label>
+                        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="pemainDua" name="pemainDua">
+                            <option value="">-- Pilih Pemain --</option>
+                            <option value="none">None</option>
+                            <option value="pemain1">Pemain 1</option>
+                            <option value="pemain2">Pemain 2</option>
+                            <option value="pemain3">Pemain 3</option>
+                            <option value="pemain4">Pemain 4</option>
+                        </select>
+                    </div>
+                </td>
+
+                <td class="px-6 py-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="peristiwaDua">Peristiwa Dua</label>
+                        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="peristiwaDua" name="peristiwaDua">
+                            <option value="">-- Pilih Peristiwa --</option>
+                            <option value="none">None</option>
+                            <option value="kartukuning">Kartu Kuning</option>
+                            <option value="kartumerah">Kartu Merah</option>
+                            <option value="assist">Assist</option>
+                            <option value="gol">Gol</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div class="mb-4">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Submit
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

@@ -50,7 +50,11 @@ python manage.py runserver
 17. /pembelian/waktu/pertandingan/buy = pilih jenis dan pembayaran
 18. /manage = pengelolaan pertandingan
 19. /manage/peristiwa/ = melihat pertandingan (Implementasi babak 2 dan akhir dari grup stage akan dilakukan sekaligus pada bagian backend nantinya)
-
-
+20. /creation = index pembuatan pertandingan
+21. /creation/add = pilih stadium dan tanggal
+22. /creation/add/waktu = pilih waktu
+23. /creation/add/waktu/create = form pembuatan pertandingan
+24. /start = index mulai pertandingan
+25. /start/addperistiwa = tambah peristiwa
 N.B: Edit Navbar di /templates/base.html
 

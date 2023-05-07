@@ -27,5 +27,6 @@ urlpatterns = [
     path('pinjam/', include('peminjamanStadium.urls')),
     path('pembelian/', include('pembelianTiket.urls')),
     path('manage/', include('managePertandingan.urls')),
-    path('creation/', include('pembuatanPertandingan.urls'))
+    path('creation/', include('pembuatanPertandingan.urls')),
+    path('start/', include('mulaiPertandingan.urls')),
 ]

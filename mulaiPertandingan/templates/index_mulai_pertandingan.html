@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Mulai Pertandingan</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="font-bold text-center text-3xl">Mulai Pertandingan</div>
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+        <tr>
+            <th scope="col" class="px-6 py-3">Tim 1</th>
+            <th scope="col" class="px-6 py-3">Tim 2</th>
+            <th scope="col" class="px-6 py-3"></th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <td class="px-6 py-4">A</td>
+            <td class="px-6 py-4">B</td>
+            <td class="px-6 py-4">
+                <p><a href="addperistiwa/">Masukkan Peristiwa Tim 1</a></p>
+                <p><a href="addperistiwa/">Masukkan Peristiwa Tim 2</a></p>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="#" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-yellow-700 hover:text-white">Submit</button></a>
+    </div>
+</div>
+{% endblock content %}
