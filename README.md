@@ -1,7 +1,7 @@
 # Tugas Kelompok Basis Data 2022 - 2023
 
 ## Kelompok
-1. nama - npm 
+1. Muhammad Alif Ilham - 2106751341
 2. Nicholas Sidharta - 2106752294
 3. Vinsensius Ferdinando - 2106751221
 4. nama - npm
