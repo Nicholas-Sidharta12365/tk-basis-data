@@ -63,7 +63,7 @@
         </div>
       </div>
     </nav>
-    <nav class="bg-gray-50 dark:bg-gray-700">
+    <nav class="bg-gray-50 dark:bg-gray-700 {{ navbar_status }}">
       <div class="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
         <div class="flex items-center">
           <ul
@@ -72,7 +72,7 @@
             <li>
               <a
                 href="/dashboard"
-                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm"
+                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm {{ dashboard_status }}"
                 aria-current="page"
                 >Dashboard</a
               >
@@ -80,49 +80,49 @@
             <li>
               <a
                 href="/mengelola"
-                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm"
+                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm {{ mengelola_tim_status }}"
                 >Mengelola Tim</a
               >
             </li>
             <li>
               <a
                 href="/pinjam"
-                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm"
+                class="text-gray-900 dark:text-white hover:underline text-xs sm:text-sm {{ peminjaman_stadium_status }}"
                 >Peminjaman Stadium</a
               >
             </li>
             <li>
               <a
                 href="/manage"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ manage_pertandingan_status }}"
                 >Manage Pertandingan</a
               >
             </li>
             <li>
               <a
                 href="/pembelian"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ pembelian_tiket_status }}"
                 >Pembelian Tiket</a
               >
             </li>
             <li>
               <a
                 href="/list"
-                class="text-gray-900 dark:text-white hover:underline"
-                >List Pertandingan (P/M)</a
+                class="text-gray-900 dark:text-white hover:underline {{ list_pertandingan_status }}"
+                >List Pertandingan</a
               >
             </li>
             <li>
               <a
                 href="/rapat"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ rapat_status }}"
                 >Rapat</a
               >
             </li>
             <li>
               <a
                 href="/history"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ history_rapat_status }}"
                 >History Rapat</a
               >
             </li>
@@ -130,7 +130,7 @@
             <li>
               <a
                 href="/creation"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ pembuatan_pertandingan_status }}"
                 >Pembuatan Pertandingan</a
               >
             </li>
@@ -138,7 +138,7 @@
             <li>
               <a
                 href="/start"
-                class="text-gray-900 dark:text-white hover:underline"
+                class="text-gray-900 dark:text-white hover:underline {{ mulai_pertandingan_status }}"
                 >Mulai Pertandingan</a
               >
             </li>

@@ -11,6 +11,18 @@ import psycopg2
 import uuid
 
 def index(request):
+
+    if 'logged_user' not in request.session:
+        context = {
+            'navbar_status': 'hidden',
+            'logout_status': 'hidden'
+        }
+
+        return render(request, 'auth.html', context)
+
+    context = {}
+    context.update(get_role_context(request.session.get('logged_user')['role']))
+    
     return render(request, 'auth.html')
 
 def login(request):
@@ -39,25 +51,60 @@ def login(request):
 
         result = cur.fetchone()
 
-        cur.close()
-        conn.close()
-
         if result:
             user = {
                 'username': username,
                 'password': password,
             }
+
+            tables = ['manajer', 'penonton', 'panitia']
+            for table in tables:
+                query = f"SELECT * FROM {schema_name}.{table} WHERE username = %s;"
+                params = [username]
+                cur.execute(query, params)
+                result = cur.fetchall()
+
+                if result:
+                    role = table
+                    break
+            else:
+                role = None
+
+            if role:
+                user['role'] = role
+
             request.session['logged_user'] = user
             messages.success(request, 'Login successful!')
+            cur.close()
+            conn.close()
             return redirect('/dashboard')
         else:
             messages.error(request, 'Invalid username or password.')
+            cur.close()
+            conn.close()
+    else:
+        if 'logged_user' not in request.session:
+            context = {
+                'navbar_status': 'hidden',
+                'logout_status': 'hidden'
+            }
+            return render(request, 'login.html', context)
 
-    context = {}
-    return render(request, 'login.html', context)
+        context = {}
+        context.update(get_role_context(request.session.get('logged_user')['role']))
+        return render(request, 'login.html', context)
 
 def register(request):
-    return render(request, 'register.html')
+    if 'logged_user' not in request.session:
+            context = {
+                'navbar_status': 'hidden',
+                'logout_status': 'hidden'
+            }
+            return render(request, 'register.html', context)
+
+    context = {}
+    context.update(get_role_context(request.session.get('logged_user')['role']))
+    return render(request, 'register.html', context)
 
 def register_user(request):
     if request.method == 'POST':
@@ -104,8 +151,17 @@ def register_user(request):
             if conn is not None:
                 conn.close()
 
-    context = {}
-    return render(request, 'user.html', context)
+    else:
+        if 'logged_user' not in request.session:
+            context = {
+                'navbar_status': 'hidden',
+                'logout_status': 'hidden'
+            }
+            return render(request, 'user.html', context)
+
+        context = {}
+        context.update(get_role_context(request.session.get('logged_user')['role']))
+        return render(request, 'user.html', context)
 
 def register_panitia(request):
     if request.method == 'POST':
@@ -187,8 +243,17 @@ def register_panitia(request):
             if conn is not None:
                 conn.close()
 
-    context = {}
-    return render(request, 'panitia.html', context)
+    else:
+        if 'logged_user' not in request.session:
+            context = {
+                'navbar_status': 'hidden',
+                'logout_status': 'hidden'
+            }
+            return render(request, 'panitia.html', context)
+
+        context = {}
+        context.update(get_role_context(request.session.get('logged_user')['role']))
+        return render(request, 'panitia.html', context)
 
 
 def register_manajer(request):
@@ -270,8 +335,17 @@ def register_manajer(request):
             if conn is not None:
                 conn.close()
 
-    context = {}
-    return render(request, 'manajer.html', context)
+    else:
+        if 'logged_user' not in request.session:
+            context = {
+                'navbar_status': 'hidden',
+                'logout_status': 'hidden'
+            }
+            return render(request, 'manajer.html', context)
+
+        context = {}
+        context.update(get_role_context(request.session.get('logged_user')['role']))
+        return render(request, 'manajer.html', context)
 
 def register_penonton(request):
         if request.method == 'POST':
@@ -352,10 +426,66 @@ def register_penonton(request):
                 if conn is not None:
                     conn.close()
 
-        context = {}
-        return render(request, 'penonton.html', context)
+        else:
+            if 'logged_user' not in request.session:
+                context = {
+                    'navbar_status': 'hidden',
+                    'logout_status': 'hidden'
+                }
+                return render(request, 'penonton.html', context)
+
+            context = {}
+            context.update(get_role_context(request.session.get('logged_user')['role']))
+            return render(request, 'penonton.html', context)
 
 def logout(request):
     if 'logged_user' in request.session:
         del request.session['logged_user']
     return redirect('/auth')
+
+def get_role_context(role):
+    context = {
+        'login_status': 'hidden',
+        'register_status': 'hidden',
+        'dashboard_status': None,
+        'mengelola_tim_status': None,
+        'peminjaman_stadium_status': None,
+        'manage_pertandingan_status': None,
+        'pembelian_tiket_status': None,
+        'list_pertandingan_status': None,
+        'rapat_status': None,
+        'history_rapat_status': None,
+        'pembuatan_pertandingan_status': None,
+        'mulai_pertandingan_status': None
+    }
+
+    if role == 'manajer':
+        context.update({
+            'manage_pertandingan_status': 'hidden',
+            'pembelian_tiket_status': 'hidden',
+            'rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+    elif role == 'penonton':
+        context.update({
+            'mengelola_tim_status': 'hidden',
+            'peminjaman_stadium_status': 'hidden',
+            'manage_pertandingan_status': 'hidden',
+            'rapat_status': 'hidden',
+            'history_rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+    elif role == 'panitia':
+        context.update({
+            'mengelola_tim_status': 'hidden',
+            'peminjaman_stadium_status': 'hidden',
+            'pembelian_tiket_status': 'hidden',
+            'list_pertandingan_status': 'hidden',
+            'history_rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+
+    return context

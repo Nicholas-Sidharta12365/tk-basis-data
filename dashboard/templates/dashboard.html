@@ -1,125 +1,141 @@
-{% extends 'base.html' %}
-
-{% block meta %}
+{% extends 'base.html' %} {% block meta %}
 <title>Dashboard</title>
-{% endblock meta %}
-
-{% block content %}
+{% endblock meta %} {% block content %}
 
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-4">Dashboard {{role}}</h1>
+  <h1 class="text-2xl font-bold mb-4">Dashboard {{role}}</h1>
 
-    <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
-      <h2 class="text-lg font-bold mb-4">Profile {{ role }}</h2>
-      <div class="flex flex-wrap mb-2">
-        <div class="w-full md:w-1/2">
-          <label class="block text-gray-700 font-bold mb-2" for="first-name">
-            First Name
-          </label>
-          {{ fname }}
-        </div>
-        <div class="w-full md:w-1/2 md:pl-4">
-          <label class="block text-gray-700 font-bold mb-2" for="last-name">
-            Last Name
-          </label>
-          {{ lname }}
-        </div>
+  <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
+    <h2 class="text-lg font-bold mb-4">Profile {{ role }}</h2>
+    <div class="flex flex-wrap mb-2">
+      <div class="w-full md:w-1/2">
+        <label class="block text-gray-700 font-bold mb-2" for="first-name">
+          First Name
+        </label>
+        {{ fname }}
       </div>
-      <div class="flex flex-wrap mb-2">
-        <div class="w-full md:w-1/2">
-          <label class="block text-gray-700 font-bold mb-2" for="phone">
-            Phone Number
-          </label>
-          {{ phone }}
-        </div>
-        <div class="w-full md:w-1/2 md:pl-4">
-          <label class="block text-gray-700 font-bold mb-2" for="email">
-            Email Address
-          </label>
-          {{ email }}
-        </div>
+      <div class="w-full md:w-1/2 md:pl-4">
+        <label class="block text-gray-700 font-bold mb-2" for="last-name">
+          Last Name
+        </label>
+        {{ lname }}
       </div>
-      <div class="mb-2">
-        <label class="block text-gray-700 font-bold mb-2" for="address">
+    </div>
+    <div class="flex flex-wrap mb-2">
+      <div class="w-full md:w-1/2">
+        <label class="block text-gray-700 font-bold mb-2" for="phone">
+          Phone Number
+        </label>
+        {{ phone }}
+      </div>
+      <div class="w-full md:w-1/2 md:pl-4">
+        <label class="block text-gray-700 font-bold mb-2" for="email">
+          Email Address
+        </label>
+        {{ email }}
+      </div>
+    </div>
+    <div class="flex flex-wrap mb-2">
+      <div class="w-full md:w-1/2">
+        <label class="block text-gray-700 font-bold mb-2" for="phone">
           Address
         </label>
-        {{ adress }}
+        {{ address }}
       </div>
-      <div class="w-full md:w-1/2">
-        <label class="block text-gray-700 font-bold mb-2" for="status">
-          Status
+      <div class="w-full md:w-1/2 md:pl-4">
+        <label class="block text-gray-700 font-bold mb-2" for="email">
+          status
         </label>
         {{ status }}
       </div>
-      {% if role == 'panitia' %}
-        <div class="w-full md:w-1/2 md:pl-4">
-          <label class="block text-gray-700 font-bold mb-2" for="position">
-            Position (for Committee)
-          </label>
-          {{ rank }}
-        </div>
-      {% endif %}
-    </section>
-    <!-- Manager section -->
-    {% if role == 'manajer' %}
-    <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
-      <h2 class="text-lg font-bold mb-4">Manager</h2>
-      <div class="flex flex-wrap mb-2">
-        <div class="w-full md:w-1/2">
-          <label class="block text-gray-700 font-bold mb-2" for="team">
-            Team
-          </label>
-          <select class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="team">
-            <option value="no-team">Belum Membuat Tim</option>
-            <option value="team-1">Team 1</option>
-            <option value="team-2">Team 2</option>
-          </select>
-        </div>
-        <div class="w-full md:w-1/2 md:pl-4">
-          <label class="block text-gray-700 font-bold mb-2" for="team-members">
-            Team Members
-          </label>
-          <ul class="list-disc list-inside">
-            <li>John Doe</li>
-            <li>Jane Smith</li>
-            <li>Bob Johnson</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    {% endif %}
-    <!-- Audience section -->
-    {% if role == 'penonton' %}
-    <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
-      <h2 class="text-lg font-bold mb-4">Audience</h2>
-      <div class="mb-2">
-        <label class="block text-gray-700 font-bold mb-2" for="upcoming-events">
-          Upcoming Events
-        </label>
-        <ul class="list-disc list-inside">
-          <li>Pertandingan A - 10 May 2023</li>
-          <li>Pertandingan B - 12 May 2023</li>
-          <li>Pertandingan C - 15 May 2023</li>
-        </ul>
-      </div>
-    </section>
-    {% endif %}
-    <!-- Committee section -->
+    </div>
     {% if role == 'panitia' %}
-    <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
-      <h2 class="text-lg font-bold mb-4">Committee</h2>
-      <div class="mb-2">
-        <label class="block text-gray-700 font-bold mb-2" for="upcoming-meetings">
-          Upcoming Meetings
+    <div class="w-full md:w-1/2">
+      <label class="block text-gray-700 font-bold mb-2" for="position">
+        Position
+      </label>
+      {{ rank }}
+    </div>
+    {% endif %}
+  </section>
+  <!-- Manager section -->
+  {% if role == 'manajer' %}
+  <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
+    <h2 class="text-lg font-bold mb-4">Manager</h2>
+    <div class="flex flex-wrap mb-2">
+      <div class="w-full md:w-1/2">
+        <label class="block text-gray-700 font-bold mb-2" for="team">
+          Team
+        </label>
+        <select
+          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="team"
+        >
+          <option value="no-team">Belum Membuat Tim</option>
+          <option value="team-1">Team 1</option>
+          <option value="team-2">Team 2</option>
+        </select>
+      </div>
+      <div class="w-full md:w-1/2 md:pl-4">
+        <label class="block text-gray-700 font-bold mb-2" for="team-members">
+          Team Members
         </label>
         <ul class="list-disc list-inside">
-          <li>Rapat A - 8 May 2023</li>
-          <li>Rapat B - 13 May 2023</li>
-          <li>Rapat C - 20 May 2023</li>
+          <li>John Doe</li>
+          <li>Jane Smith</li>
+          <li>Bob Johnson</li>
         </ul>
       </div>
-    </section>
-    {% endif %}
+    </div>
+  </section>
+  {% endif %}
+  <!-- Audience section -->
+  {% if role == 'penonton' %}
+  <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
+    <h2 class="text-lg font-bold mb-4">Audience</h2>
+    <div class="mb-2">
+      <label class="block text-gray-700 font-bold mb-2" for="upcoming-events">
+        Upcoming Events
+      </label>
+      <ul class="list-disc list-inside">
+        <li>Pertandingan A - 10 May 2023</li>
+        <li>Pertandingan B - 12 May 2023</li>
+        <li>Pertandingan C - 15 May 2023</li>
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+  <!-- Committee section -->
+  {% if role == 'panitia' %}
+  <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
+    <h2 class="text-lg font-bold mb-4">Committee</h2>
+    <div class="mb-2">
+      <label class="block text-gray-700 font-bold mb-2" for="upcoming-meetings">
+        Upcoming Meetings
+      </label>
+      {% if upcoming_meetings %}
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Datetime</th>
+              <th class="px-4 py-2">Isi Rapat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for meeting in upcoming_meetings %}
+            <tr>
+              <td class="border px-4 py-2">{{ meeting.Datetime }}</td>
+              <td class="border px-4 py-2">{{ meeting.Isi_Rapat }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-center font-bold text-red-500">Belum Ada Rapat</p>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
 </div>
 
 {% endblock content %}
