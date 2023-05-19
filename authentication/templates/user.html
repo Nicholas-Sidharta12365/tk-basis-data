@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Registrasi Akun</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "register py-16 bg-blue-200">
+    
+    <h1 class="text-5xl font-bold text-center pt-8"><span class="text-red-600">U-</span><span class="text-yellow-600">League</span> Register</h1>
+    <h3 class="text-center mt-3 text-xl">Welcome!</h3>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table class="register_table grid grid-cols-1 grid-rows-1 place-items-center pt-8">
+            <tr>
+                <td><div class="register_username mt-4 font-bold mr-4">Username: </div></td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control mt-4"></td>
+            </tr>
+
+            <tr>
+                <td><div class="register_password mt-4 font-bold">Password: </div></td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control mt-4"></td>
+            </tr>
+
+            <tr class="text-center">
+                <td></td>
+                <td><input class="btn btn-primary registerpage_button text-blue-600 hover:text-white my-4 font-bold" type="submit" value="register"></td>
+            </tr>
+        </table>
+    </form>
+</div>  
+
+{% endblock content %}

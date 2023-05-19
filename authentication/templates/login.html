@@ -11,7 +11,7 @@
     <h1 class="text-5xl font-bold text-center pt-8"><span class="text-red-600">U-</span><span class="text-yellow-600">League</span> Login</h1>
     <h3 class="text-center mt-3 text-xl">Please Login Before Proceeding</h3>
 
-    <form method="POST" action="">
+    <form method="POST" action="" autocomplete="off">
         {% csrf_token %}
         <table class="login_table grid grid-cols-1 grid-rows-1 place-items-center pt-8">
             <tr>
@@ -30,13 +30,6 @@
             </tr>
         </table>
     </form>
-    <div class="control_login">
-        {% if messages %}
-                {% for message in messages %}
-                    <p class="text-center text-red-600 font-bold">{{ message }}</p>
-                {% endfor %}
-        {% endif %}     
-    </div>
         
     <div class="register_block text-center mb-8">Belum mempunyai akun? <a class="font-bold text-blue-600 hover:text-blue-900" href="/childcare/register">Buat Akun</a></div>
 
