@@ -62,33 +62,37 @@
   {% if role == 'manajer' %}
   <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
     <h2 class="text-lg font-bold mb-4">Manager</h2>
-    <div class="flex flex-wrap mb-2">
-      <div class="w-full md:w-1/2">
-        <label class="block text-gray-700 font-bold mb-2" for="team">
-          Team
-        </label>
-        <select
-          class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="team"
-        >
-          <option value="no-team">Belum Membuat Tim</option>
-          <option value="team-1">Team 1</option>
-          <option value="team-2">Team 2</option>
-        </select>
-      </div>
-      <div class="w-full md:w-1/2 md:pl-4">
-        <label class="block text-gray-700 font-bold mb-2" for="team-members">
-          Team Members
-        </label>
-        <ul class="list-disc list-inside">
-          <li>John Doe</li>
-          <li>Jane Smith</li>
-          <li>Bob Johnson</li>
-        </ul>
-      </div>
-    </div>
+    {% if manajer_tim %}
+    <table class="border-collapse w-full">
+      <thead>
+        <tr>
+          <th class="border border-gray-400 px-4 py-2">Team</th>
+          <th class="border border-gray-400 px-4 py-2">Team Members</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for team_player in manajer_tim %}
+        <tr>
+          <td class="border border-gray-400 px-4 py-2">
+            {{ team_player.team_name }}
+          </td>
+          <td class="border border-gray-400 px-4 py-2">
+            <ul class="list-disc list-inside">
+              {% for player_name in team_player.player_names %}
+              <li>{{ player_name }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-center font-bold text-red-500">Belum Membuat Tim</p>
+    {% endif %}
   </section>
   {% endif %}
+
   <!-- Audience section -->
   {% if role == 'penonton' %}
   <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
@@ -97,14 +101,42 @@
       <label class="block text-gray-700 font-bold mb-2" for="upcoming-events">
         Upcoming Events
       </label>
-      <ul class="list-disc list-inside">
-        <li>Pertandingan A - 10 May 2023</li>
-        <li>Pertandingan B - 12 May 2023</li>
-        <li>Pertandingan C - 15 May 2023</li>
-      </ul>
+      {% if upcoming_pertandingan_list %}
+      <table class="border-collapse w-full">
+        <thead>
+          <tr>
+            <th class="border border-gray-400 px-4 py-2">Pertandingan</th>
+            <th class="border border-gray-400 px-4 py-2">Start Date</th>
+            <th class="border border-gray-400 px-4 py-2">End Date</th>
+            <th class="border border-gray-400 px-4 py-2">Stadium</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pertandingan in upcoming_pertandingan_list %}
+          <tr>
+            <td class="border border-gray-400 px-4 py-2">
+              {{ pertandingan.pertandingan_id }}
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              {{ pertandingan.start_datetime }}
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              {{ pertandingan.end_datetime }}
+            </td>
+            <td class="border border-gray-400 px-4 py-2">
+              {{ pertandingan.stadium_name }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="text-center font-bold text-red-500">Belum Memesan Pertandingan</p>
+      {% endif %}
     </div>
   </section>
   {% endif %}
+
   <!-- Committee section -->
   {% if role == 'panitia' %}
   <section class="bg-white rounded-lg shadow-md px-6 py-4 mb-8">
@@ -114,24 +146,24 @@
         Upcoming Meetings
       </label>
       {% if upcoming_meetings %}
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th class="px-4 py-2">Datetime</th>
-              <th class="px-4 py-2">Isi Rapat</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for meeting in upcoming_meetings %}
-            <tr>
-              <td class="border px-4 py-2">{{ meeting.Datetime }}</td>
-              <td class="border px-4 py-2">{{ meeting.Isi_Rapat }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Datetime</th>
+            <th class="px-4 py-2">Isi Rapat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for meeting in upcoming_meetings %}
+          <tr>
+            <td class="border px-4 py-2">{{ meeting.Datetime }}</td>
+            <td class="border px-4 py-2">{{ meeting.Isi_Rapat }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       {% else %}
-        <p class="text-center font-bold text-red-500">Belum Ada Rapat</p>
+      <p class="text-center font-bold text-red-500">Belum Ada Rapat</p>
       {% endif %}
     </div>
   </section>

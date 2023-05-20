@@ -82,6 +82,7 @@ def login(request):
             messages.error(request, 'Invalid username or password.')
             cur.close()
             conn.close()
+            return redirect('/auth/login')
     else:
         if 'logged_user' not in request.session:
             context = {

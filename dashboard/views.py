@@ -74,6 +74,8 @@ def index(request):
         status = None
         rank = None
         meeting = None
+        team_player_list = None
+        upcoming_pertandingan_list = None
 
         current_datetime = datetime.datetime.now()
 
@@ -116,6 +118,37 @@ def index(request):
                         upcoming_meetings.append(meeting_loop)
 
                     meeting = upcoming_meetings
+                elif role == 'manajer':
+                    query = f"SELECT tm.nama_tim, p.nama_depan, p.nama_belakang FROM {schema_name}.tim_manajer AS tm INNER JOIN {schema_name}.pemain AS p ON tm.Nama_Tim = p.nama_tim WHERE tm.ID_Manajer = %s;"
+                    params_manajer = [result[0][0]]
+                    cur.execute(query, params_manajer)
+                    result_manajer = cur.fetchall()
+
+                    team_player_list = []
+                    for row in result_manajer:
+                        team_name = row[0]
+                        player_name = row[1] + " " + row[2]
+                        team_found = False
+                        for team_player in team_player_list:
+                            if team_player["team_name"] == team_name:
+                                team_player["player_names"].append(player_name)
+                                team_found = True
+                                break
+                        if not team_found:
+                            team_player_list.append({"team_name": team_name, "player_names": [player_name]})
+                elif role == 'penonton':
+                    query = f"SELECT p.ID_Pertandingan, p.Start_Datetime, p.End_Datetime, s.Nama FROM {schema_name}.Pembelian_Tiket AS pt INNER JOIN {schema_name}.Pertandingan AS p ON pt.id_pertandingan = p.ID_Pertandingan INNER JOIN {schema_name}.Stadium AS s ON p.Stadium = s.ID_Stadium WHERE pt.id_penonton = %s AND p.Start_Datetime > NOW();"
+                    params_penonton = [result[0][0]] 
+                    cur.execute(query, params_penonton)
+                    result_pertandingan = cur.fetchall()
+
+                    upcoming_pertandingan_list = []
+                    for row in result_pertandingan:
+                        pertandingan_id = row[0]
+                        start_datetime = row[1]
+                        end_datetime = row[2]
+                        stadium_name = row[3]
+                        upcoming_pertandingan_list.append({"pertandingan_id": pertandingan_id, "start_datetime": start_datetime, "end_datetime": end_datetime, "stadium_name": stadium_name})
 
                 query_status = f"SELECT status FROM {schema_name}.status_non_pemain WHERE id_non_pemain = %s;"
                 params_status = [result[0][0]]
@@ -136,7 +169,9 @@ def index(request):
             'address': address,
             'status': status,
             'rank': rank,
-            'upcoming_meetings': meeting
+            'upcoming_meetings': meeting,
+            'manajer_tim': team_player_list,
+            'upcoming_pertandingan_list': upcoming_pertandingan_list
         }
 
         context.update(get_role_context(role))
