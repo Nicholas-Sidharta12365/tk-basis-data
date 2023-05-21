@@ -5,6 +5,6 @@ from mulaiRapat.views import *
 app_name = 'mulaiRapat'
 
 urlpatterns = [
-    path('', index, name='mulaiRapat'),
-    path('isi/', pengisian_rapat, name='pengisian_rapat')
+    path('', index, name='rapat'),
+    path('isi/<uuid:id_pertandingan>/', pengisian_rapat, name='pengisian_rapat')
 ]
