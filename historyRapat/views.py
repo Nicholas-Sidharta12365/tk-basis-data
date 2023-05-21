@@ -8,7 +8,6 @@ def index(request):
     manajer_id = get_manajer_id(request)
     if manajer_id:
         rapat_participated = get_participated_rapat(manajer_id)
-        print(rapat_participated)
     else:
         return redirect('/')
     
