@@ -3,7 +3,7 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="font-bold text-center text-3xl">Rapat Pertandingan {{detail_rapat.nama_a}} vs {{detail_rapat.nama_b}}</div>
+<div class="font-bold text-center text-3xl">Rapat Pertandingan {{detail.nama_a}} vs {{detail.nama_b}}</div>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <form class="text-center" action="/dashboard">
@@ -13,9 +13,9 @@
         </div>
 
         <div class="mb-4">
-            <a href="{% url 'mulaiRapat:submit_rapat' detail_rapat.id_pertandingan "abc"%}" class="button">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Submit
-            </a>
+            </button>
         </div>
     </form>
 </div>

@@ -1,5 +1,4 @@
 import datetime
-from http.client import HTTPResponse
 from django.shortcuts import render
 from django.conf import settings
 import psycopg2
@@ -53,6 +52,7 @@ def index(request):
     result_tim = cur.fetchall()
     list_peminjaman=[]
     for item in result_tim:
+        print(item[0],item[1],item[2],item[3],item[4],item[5])
         pinjam_stadium = List_Pinjam(item[1],item[2],item[3],item[4],item[5])
         list_peminjaman.append(pinjam_stadium)
     
@@ -81,54 +81,10 @@ def pengisian_rapat(request, id_pertandingan):
     cur.execute(query)
     result = cur.fetchall()
     current_datetime = datetime.datetime.now() 
-    user = request.session.get('logged_user')
-    username = user['username']
-    query_id_panitia = f"SELECT id_panitia\
-                            FROM sepak_bola.PANITIA\
-                                WHERE username='{username}';"
-    cur.execute(query_id_panitia)
-    result_id_panitia = cur.fetchall()
-    detail = Isi_Rapat(id_pertandingan, current_datetime,result_id_panitia,result[0][0],result[1][0],result[0][1],result[1][1])  
-
-    print(detail.id_pertandingan)
+    detail = Isi_Rapat(id_pertandingan, current_datetime,'xx',result[0][0],result[1][0],result[0][1],result[1][1])
     context = {
-                'detail_rapat': detail,
-            } 
-    
+                'detail': detail,
+            }
+    user = request.user
+    print(user.get_username())
     return render(request, 'pengisian_rapat.html',context)
-
-def submit_rapat(request, id_pertandingan, isi):
-    db_config = settings.DATABASES['default']
-
-    conn = psycopg2.connect(
-            dbname=db_config['NAME'],
-            user=db_config['USER'],
-            password=db_config['PASSWORD'],
-            host=db_config['HOST'],
-            port=db_config['PORT']
-        )
-    cur = conn.cursor()
-    id=id_pertandingan
-    query = f"SELECT tm.id_manajer, tm.nama_tim\
-                FROM sepak_bola.tim_manajer tm\
-                INNER JOIN sepak_bola.tim_pertandingan tp\
-                    ON tp.nama_tim=tm.nama_tim\
-                WHERE tp.id_pertandingan='{id}';"
-    cur.execute(query)
-    result = cur.fetchall()
-    current_datetime = datetime.datetime.now() 
-    user = request.session.get('logged_user')
-    username = user['username']
-    query_id_panitia = f"SELECT id_panitia\
-                            FROM sepak_bola.PANITIA\
-                                WHERE username='{username}';"
-    cur.execute(query_id_panitia)
-    result_id_panitia = cur.fetchall()
-    detail = Isi_Rapat(id_pertandingan, current_datetime,result_id_panitia,result[0][0],result[1][0],result[0][1],result[1][1]) 
-    id_panitia = str(detail.id_panitia[0][0])
-    query_insert_rapat =  f"INSERT INTO sepak_bola.RAPAT (id_pertandingan,datetime,perwakilan_panitia,manajer_tim_a,manajer_tim_b,isi_rapat)\
-                            VALUES ('{detail.id_pertandingan}','{detail.datetime}',\
-                                '{id_panitia}','{detail.id_manajer_a}','{detail.id_manajer_b}',\
-                                    '{isi}');"
-    cur.execute(query_insert_rapat)
-    return render(request, 'index_rapat.html')
