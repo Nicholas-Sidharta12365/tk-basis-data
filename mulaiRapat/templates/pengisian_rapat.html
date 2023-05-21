@@ -3,7 +3,7 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="font-bold text-center text-3xl">Rapat Pertandingan {NAMA TIM 1} vs {NAMA TIM 2}</div>
+<div class="font-bold text-center text-3xl">Rapat Pertandingan {{detail.nama_a}} vs {{detail.nama_b}}</div>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <form class="text-center" action="/dashboard">

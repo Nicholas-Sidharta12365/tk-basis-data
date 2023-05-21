@@ -21,13 +21,15 @@
 
 
         <tbody>
+        {% for obj in list_peminjaman%}
         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">A vs B</td>
-            <td class="px-6 py-4">Stadium GBK</td>
-            <td class="px-6 py-4">5 Juli 2023, 07.00 - 09.00</td>
-            <td class="px-6 py-4"><a href="isi/">Mulai Rapat</a></td>
+            <td class="px-6 py-4">{{obj.tim}}</td>
+            <td class="px-6 py-4">{{obj.stadium}}</td>
+            <td class="px-6 py-4">{{obj.start_datetime}} - {{obj.end_datetime}}</td>
+            {% comment %} <td class="px-6 py-4">{{obj.id_pertandingan}}</td> {% endcomment %}
+            <td class="px-6 py-4"><a href="{% url 'mulaiRapat:pengisian_rapat' obj.id_pertandingan %}">Mulai Rapat</a></td>
         </tr>
-
+        {% endfor %}
         </tbody>
     </table>
 </div>
