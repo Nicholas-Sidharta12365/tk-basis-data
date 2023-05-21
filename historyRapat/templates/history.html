@@ -18,40 +18,22 @@
       </tr>
     </thead>
     <tbody>
+      {% for rapat in rapat_participated %}
       <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-        <td
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          Rapat Tim A
-        </td>
-        <td class="px-6 py-4">Panitia A</td>
-        <td class="px-6 py-4">Stadium A</td>
-        <td class="px-6 py-4">2023-05-04 14:00:00</td>
+        <td class="px-6 py-4">{{ rapat.7 }} vs {{ rapat.8 }}</td>
+        <td class="px-6 py-4">{{ rapat.5 }}</td>
+        <td class="px-6 py-4">{{ rapat.6 }}</td>
+        <td class="px-6 py-4">{{ rapat.1 }}</td>
         <td class="px-6 py-4">
           <a
             href="#"
             class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Lihat Laporan Rapat</a
           >
+            Lihat Laporan Rapat
+          </a>
         </td>
       </tr>
-      <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <td
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          Rapat Tim B
-        </td>
-        <td class="px-6 py-4">Panitia B</td>
-        <td class="px-6 py-4">Stadium B</td>
-        <td class="px-6 py-4">2023-05-06 16:00:00</td>
-        <td class="px-6 py-4">
-          <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-            >Lihat Laporan Rapat</a
-          >
-        </td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>

@@ -1,36 +1,28 @@
-{% extends 'base.html' %} {% block meta %}
+{% extends 'base.html' %}
+
+{% block meta %}
 <title>List Pertandingan</title>
 {% endblock meta %}
 
 {% block content %}
-
 <div class="text-xl font-bold text-center mt-2">List Pertandingan</div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead
-        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-        >
-        <tr>
-            <th scope="col" class="px-6 py-3">Tim 1</th>
-            <th scope="col" class="px-6 py-3">Tim 2</th>
-            <th scope="col" class="px-6 py-3"></th>
-        </tr>
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">Tim 1</th>
+                <th scope="col" class="px-6 py-3">Tim 2</th>
+                <th scope="col" class="px-6 py-3"></th>
+            </tr>
         </thead>
-
-
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">A</td>
-            <td class="px-6 py-4">B</td>
-            <td class="px-6 py-4"><a href="buy/">Pilih</a></td>
-        </tr>
-
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">C</td>
-            <td class="px-6 py-4">D</td>
-            <td class="px-6 py-4"><a href="buy/">Pilih</a></td>
-        </tr>
-
+            {% for pertandingan in pertandingan_list %}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">{{ pertandingan.team_a }}</td>
+                <td class="px-6 py-4">{{ pertandingan.team_b }}</td>
+                <td class="px-6 py-4"><a href="buy/?pertandingan={{ pertandingan.id_team }}">Pilih</a></td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
