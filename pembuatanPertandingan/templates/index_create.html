@@ -13,38 +13,26 @@
         <tr>
             <th scope="col" class="px-6 py-3">Grup A</th>
             <th scope="col" class="px-6 py-3">Action</th>
-            <th scope="col" class="px-6 py-3">Grup B</th>
-            <th scope="col" class="px-6 py-3">Action</th>
         </tr>
         </thead>
 
 
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">A VS B</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-            <td class="px-6 py-4">I VS J</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-        </tr>
 
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">C VS D</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-            <td class="px-6 py-4">K VS L</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">E VS F</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-            <td class="px-6 py-4">M VS N</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-        </tr>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">G VS H</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-            <td class="px-6 py-4">? VS ?</td>
-            <td class="px-6 py-4"><a href="add/">Add</a></td>
-        </tr>
+        {% if grup_a %}
+            {% for team in grup_a %}
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <td class="px-6 py-4">{{ team.0 }} vs {{ team.1 }}</td>
+                        <td class="px-6 py-4"><a href="add/">Update</a> <a href="#">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">? vs ?</td>
+                <td class="px-6 py-4"><a href="add/">Add</a></td>
+            </tr>
+        {% endif %}
+
 
         </tbody>
 
@@ -54,8 +42,63 @@
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
         <tr>
+            <th scope="col" class="px-6 py-3">Grup B</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        {% if grup_b %}
+            {% for team in grup_b %}
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <td class="px-6 py-4">{{ team.0 }} vs {{ team.1 }}</td>
+                        <td class="px-6 py-4"><a href="add/">Update</a> <a href="#">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">? vs ?</td>
+                <td class="px-6 py-4"><a href="add/">Add</a></td>
+            </tr>
+        {% endif %}
+        </tbody>
+
+
+
+        <!-- THIRD GROUP -->
+        <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+        <tr>
             <th scope="col" class="px-6 py-3">Grup C</th>
             <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        {% if grup_c %}
+            {% for team in grup_c %}
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <td class="px-6 py-4">{{ team.0 }} vs {{ team.1 }}</td>
+                        <td class="px-6 py-4"><a href="add/">Update</a> <a href="#">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">? vs ?</td>
+                <td class="px-6 py-4"><a href="add/">Add</a></td>
+            </tr>
+        {% endif %}
+        </tbody>
+
+
+        <!-- FOURTH GROUP -->
+        <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+        <tr>
             <th scope="col" class="px-6 py-3">Grup D</th>
             <th scope="col" class="px-6 py-3">Action</th>
         </tr>
@@ -63,15 +106,19 @@
 
 
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <td class="px-6 py-4">O VS P</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-            <td class="px-6 py-4">Q VS R</td>
-            <td class="px-6 py-4"><a href="update/">Update</a> <a href="#">Delete</a></td>
-        </tr>
-
-
-
+        {% if grup_d %}
+            {% for team in grup_d %}
+                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <td class="px-6 py-4">{{ team.0 }} vs {{ team.1 }}</td>
+                        <td class="px-6 py-4"><a href="add/">Update</a> <a href="#">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <td class="px-6 py-4">? vs ?</td>
+                <td class="px-6 py-4"><a href="add/">Add</a></td>
+            </tr>
+        {% endif %}
         </tbody>
         
     </table>
