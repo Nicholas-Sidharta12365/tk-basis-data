@@ -1,15 +1,17 @@
-{% extends 'base.html' %} {% block meta %}
+{% extends 'base.html' %}
+{% block meta %}
 <title>Pembelian Tiket</title>
 {% endblock meta %}
 
 {% block content %}
 <h1 class="text-2xl font-bold mb-4 text-center">Beli Tiket</h1>
 
-<form class="text-center" action="/dashboard">
+<form class="text-center" method="post">
+    {% csrf_token %}
+
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="jenisTiket">Jenis Tiket</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="jenisTiket" name="jenisTiket">
-            <option value="">-- Pilih Jenis --</option>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="jenisTiket" name="jenis_tiket">
             <option value="vip">VIP</option>
             <option value="maineast">Main East</option>
             <option value="kategori1">Kategori 1</option>
@@ -19,19 +21,17 @@
 
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="pembayaran">Pembayaran</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="pembayaran" name="pembayaran">
-            <option value="">-- Pilih Pembayaran --</option>
-            <option value="1">Pembayaran 1</option>
-            <option value="2">Pembayaran 2</option>
-            <option value="3">Pembayaran 3</option>
-            <option value="4">Pembayaran 4</option>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="pembayaran" name="jenis_pembayaran">
+            <option value="1">Gopay</option>
+            <option value="2">Shopeepay</option>
+            <option value="3">Dana</option>
+            <option value="4">Ovo</option>
         </select>
     </div>
 
-
     <div class="mb-4">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Beli
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Beli
         </button>
     </div>
 </form>
