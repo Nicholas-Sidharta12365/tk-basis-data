@@ -7,6 +7,7 @@ from pprint import pprint
 
 # Create your views here.
 def get_role_context(role):
+    
     context = {
         'role': role,
         'login_status': 'hidden',
