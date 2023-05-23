@@ -23,6 +23,54 @@ class Isi_Rapat:
         self.nama_a = nama_a
         self.nama_b = nama_b
 
+def get_role_context(role):
+    context = {
+        'role': role,
+        'login_status': 'hidden',
+        'register_status': 'hidden',
+        'dashboard_status': None,
+        'mengelola_tim_status': None,
+        'peminjaman_stadium_status': None,
+        'manage_pertandingan_status': None,
+        'pembelian_tiket_status': None,
+        'list_pertandingan_status': None,
+        'rapat_status': None,
+        'history_rapat_status': None,
+        'pembuatan_pertandingan_status': None,
+        'mulai_pertandingan_status': None
+    }
+
+    if role == 'manajer':
+        context.update({
+            'manage_pertandingan_status': 'hidden',
+            'pembelian_tiket_status': 'hidden',
+            'rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+    elif role == 'penonton':
+        context.update({
+            'mengelola_tim_status': 'hidden',
+            'peminjaman_stadium_status': 'hidden',
+            'manage_pertandingan_status': 'hidden',
+            'rapat_status': 'hidden',
+            'history_rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+    elif role == 'panitia':
+        context.update({
+            'mengelola_tim_status': 'hidden',
+            'peminjaman_stadium_status': 'hidden',
+            'pembelian_tiket_status': 'hidden',
+            'list_pertandingan_status': 'hidden',
+            'history_rapat_status': 'hidden',
+            'pembuatan_pertandingan_status': 'hidden',
+            'mulai_pertandingan_status': 'hidden'
+        })
+
+    return context
+
 def index(request):
     db_config = settings.DATABASES['default']
 
@@ -59,6 +107,7 @@ def index(request):
     context = {
                 'list_peminjaman': list_peminjaman,
             }
+    context.update(get_role_context('panitia'))
     return render(request, 'index_rapat.html',context)
 
 def pengisian_rapat(request, id_pertandingan):
@@ -94,7 +143,7 @@ def pengisian_rapat(request, id_pertandingan):
     context = {
                 'detail_rapat': detail,
             } 
-    
+    context.update(get_role_context('panitia'))
     return render(request, 'pengisian_rapat.html',context)
 
 def submit_rapat(request, id_pertandingan, isi):
