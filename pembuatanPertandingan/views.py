@@ -85,32 +85,19 @@ def index(request):
 
         current_datetime = datetime.datetime.now()
 
-        # query = f"SELECT * FROM {schema_name}.{table}"
-
-        # query = '''
-        #             SELECT Ta.Nama_Tim, Tb.Nama_Tim
-        #             FROM sepak_bola.Tim_Pertandingan M
-        #             JOIN sepak_bola.Tim_Pertandingan Ta ON Ta.Nama_Tim = M.Nama_Tim AND Ta.ID_Pertandingan = M.ID_Pertandingan
-        #             JOIN sepak_bola.Tim_Pertandingan Tb ON Tb.Nama_Tim = M.Nama_Tim AND Tb.ID_Pertandingan = M.ID_Pertandingan
-        #             WHERE
-        #             Ta.Nama_Tim < Tb.Nama_Tim
-        #             AND Ta.Nama_Tim = M.Nama_Tim AND Ta.ID_Pertandingan = M.ID_Pertandingan
-        #             AND Tb.Nama_Tim = M.Nama_Tim AND Tb.ID_Pertandingan = M.ID_Pertandingan
-        #         '''
-        # query = '''
-        #             WITH cte AS (
-        #                 SELECT *, ROW_NUMBER() OVER (PARTITION BY ID_Pertandingan ORDER BY Nama_Tim) rn
-        #                 FROM Tim_Pertandingan
-        #             )
-
-        #             SELECT
-        #                 ID_Pertandingan
-        #                 MAX(CASE WHEN rn = 1 THEN Nama_Tim END) AS Col1,
-        #                 MAX(CASE WHEN rn = 2 THEN Nama_Tim END) AS Col2,
-        #             FROM cte
-        #             GROUP BY ID_Pertandingan
-        #             ORDER BY ID_Pertandingan
-        #         '''
+        # query_trigger = '''
+        #                   CREATE OR REPLACE FUNCTION BUAT_PERTANDINGAN() RETURNS trigger AS
+        #                   $$
+        #                   BEGIN
+        #                   
+        #                   
+        #                   
+        #                   
+        #                   
+        #                   
+        #                   
+        #                   
+        #                 '''
         query = '''
                     SELECT MIN(Nama_Tim) as TimA, MAX(Nama_Tim) as TimB
                     FROM sepak_bola.Tim_Pertandingan
@@ -121,6 +108,38 @@ def index(request):
         params = [user['username']]
         cur.execute(query, params)
         result = cur.fetchall() # Grup A
+
+        # Query pembuatan trigger
+
+        # buat_pertandingan_trigger = '''
+        #             CREATE OR REPLACE FUNCTION BUAT_PERTANDINGAN() RETURNS trigger AS
+        #             $$
+        #             BEGIN
+        #             IF (NEW.Stadium, NEW.Start_Datetime IN (
+        #                 SELECT P.ID_Stadium, P.Start_Datetime
+        #                 FROM sepak_bola.Peminjaman P
+        #                 WHERE P.id_stadium = NEW.Stadium
+        #                 AND (NEW.Start_datetime BETWEEN P.start_datetime AND P.end_datetime))
+        #             )
+        #             THEN
+        #             RAISE EXCEPTION 'Stadium sedang dipinjam oleh %%', P.ID_Manajer;
+        #             END IF;
+        #             RETURN NEW;
+        #             END;
+        #             $$
+        #             LANGUAGE plpgsql;
+
+        #             CREATE TRIGGER BUAT_PERTANDINGAN
+        #             BEFORE INSERT OR UPDATE ON sepak_bola.Pertandingan
+        #             FOR EACH ROW EXECUTE PROCEDURE BUAT_PERTANDINGAN();
+        # '''
+        # cur.execute(buat_pertandingan_trigger, params)
+
+        # tes_insert = '''
+        # INSERT INTO sepak_bola.pertandingan (id_pertandingan, start_datetime, end_datetime, stadium)
+        # values ('76d18b6c-964c-41ba-9099-3d79b16b3269', '2023-05-22 10:00:00', '2023-05-24 14:00:00', '26a755e2-18d6-4fbe-8923-d1a646e3e544');
+        # '''
+        # cur.execute(tes_insert, params)
 
         context = {}
         grup_b = []
@@ -138,7 +157,7 @@ def index(request):
                 context.update({"ab_range":range(len(result))})
             else:
                 context.update({"ab_range":range(len(grup_b))})
-            print(f"User is: {user}")
+            # print(f"User is: {user}")
             # pprint(result)
 
 
