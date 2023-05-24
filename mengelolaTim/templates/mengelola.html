@@ -22,40 +22,41 @@
       </tr>
     </thead>
     <tbody>
+      {% if list_pemain %}
+      {% for pemain in list_pemain %}
       <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-        <td class="px-6 py-4">John</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">TRUE</td>
-        <td class="px-6 py-4">Captain</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">Undergraduate</td>
+        <td class="px-6 py-4">{{pemain.nama_depan}} {{pemain.nama_belakang}}</td>
+        <td class="px-6 py-4">{{pemain.nomor_hp}}</td>
+        <td class="px-6 py-4">{{pemain.tgl_lahir}}</td>
         <td class="px-6 py-4">
-          <button class="bg-blue-400 font-bold text-center text-white p-2">
-            Make Captain
-          </button>
-          <button class="bg-red-400 font-bold text-center text-white p-2">
-            Delete
-          </button>
+          {% if pemain.is_captain %}
+          Yes
+          {% else %}
+          No
+          {% endif %}
+        </td>
+        <td class="px-6 py-4">{{pemain.posisi}}</td>
+        <td class="px-6 py-4">{{pemain.npm}}</td>
+        <td class="px-6 py-4">{{pemain.jenjang}}</td>
+        <td class="px-6 py-4">
+          {% if pemain.is_captain != True %}
+            <form method="POST" action="/mengelola/make_captain/">
+              {% csrf_token %}
+              <button class="bg-blue-400 font-bold text-center text-white p-2" name="id" value="{{pemain.id_pemain}}" type='submit'>
+              Make Captain
+              </button>
+            </form>
+          {% endif %}
+          <form method="POST" action="/mengelola/delete_pemain/">
+            {% csrf_token %}
+            <button class="bg-red-400 font-bold text-center text-white p-2" name="id" value="{{pemain.id_pemain}}">
+              Delete
+            </button>
+          </form>
         </td>
       </tr>
-      <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-        <td class="px-6 py-4">John</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">TRUE</td>
-        <td class="px-6 py-4">Captain</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">Undergraduate</td>
-        <td class="px-6 py-4">
-          <button class="bg-blue-400 font-bold text-center text-white p-2">
-            Make Captain
-          </button>
-          <button class="bg-red-400 font-bold text-center text-white p-2">
-            Delete
-          </button>
-        </td>
-      </tr>
+      {% endfor %}
+      {% endif %}
     </tbody>
   </table>
 
@@ -74,37 +75,31 @@
       </tr>
     </thead>
     <tbody>
+      {% if list_pelatih %}
+      {% for pelatih in list_pelatih %}
       <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-        <td class="px-6 py-4">Johnny</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">Johnny@example.com</td>
-        <td class="px-6 py-4">IDK St</td>
-        <td class="px-6 py-4">Captain</td>
+        <td class="px-6 py-4">{{pelatih.nama_depan}} {{pelatih.nama_belakang}}</td>
+        <td class="px-6 py-4">{{pelatih.nomor_hp}}</td>
+        <td class="px-6 py-4">{{pelatih.email}}</td>
+        <td class="px-6 py-4">{{pelatih.alamat}}</td>
+        <td class="px-6 py-4">{{pelatih.spesialisasi}}</td>
         <td class="px-6 py-4">
-          <button class="bg-red-400 font-bold text-center text-white p-2">
-            Delete
-          </button>
+          <form method="POST" action="/mengelola/delete_pelatih/">
+            {% csrf_token %}
+            <button class="bg-red-400 font-bold text-center text-white p-2" name="id" value="{{pelatih.id}}">
+              Delete
+            </button>
+          </form>
         </td>
       </tr>
-      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-        <td class="px-6 py-4">Josh</td>
-        <td class="px-6 py-4">123456789</td>
-        <td class="px-6 py-4">Josh@example.com</td>
-        <td class="px-6 py-4">IDK St</td>
-        <td class="px-6 py-4">Captain</td>
-        <td class="px-6 py-4">
-          <button class="bg-red-400 font-bold text-center text-white p-2">
-            Delete
-          </button>
-        </td>
-      </tr>
+      {% endfor %}
+      {% endif %}
     </tbody>
   </table>
 
   <div class="text-center">
-      <a href="player/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-yellow-700 hover:text-white">Pemain</button></a>
-      <a href="trainer/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-red-700 hover:text-white">Pelatih</button></a>
-      <a href="form/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-red-700 hover:text-white">Team</button></a>
+      <a href="player/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-yellow-700 hover:text-white">Tambah Pemain</button></a>
+      <a href="trainer/" class=""><button class="mt-4 text-center p-4 rounded font-bold border hover:bg-red-700 hover:text-white">Tambah Pelatih</button></a>
   </div>
 
   {% endblock content %}

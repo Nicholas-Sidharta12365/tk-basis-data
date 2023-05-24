@@ -5,39 +5,33 @@
 {% endblock meta %}
 
 {% block content %}
-
+{% if pesan_error %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ pesan_error }}</span>
+            </div>
+{% endif %}
+{% if message %}
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <span class="block sm:inline">{{ message }}</span>
+</div>
+{% endif %}
 <div class = "register py-16 bg-blue-200">
-    
+
     <h1 class="text-5xl font-bold text-center pt-8"><span class="text-red-600">U-</span><span class="text-yellow-600">League</span> Team Registration</h1>
     <h3 class="text-center mt-3 text-xl">Welcome!</h3>
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table class="register_form grid grid-cols-1 grid-rows-1 place-items-center pt-8">  
-                {{ form.as_table }}  
-                <tr>
-                    <td><div class="register_team mt-4 font-bold mr-4">Nama Tim: </div></td>
-                    <td><input type="text" name="Nama Tim" placeholder="Nama Tim" class="form-control mt-4"></td>
-                </tr>
-                <tr>
-                    <td><div class="register_univ mt-4 font-bold mr-4">Nama Universitas: </div></td>
-                    <td><input type="text" name="Nama Universitas" placeholder="Nama Universitas" class="form-control mt-4"></td>
-                </tr>
-                <tr>  
-                    <td></td>
-                    <td><input class="btn btn-primary login_button register_button text-blue-600 hover:text-white my-4 font-bold" type="submit" value="Daftar"></td> 
-                </tr>  
-            </table>  
-        </form>
+    <form method="POST" action="/mengelola/register_team/" class="grid grid-cols-1 gap-5 bg-gray rounded border-4 border-neutral-500 p-5 m-auto">
+        {% csrf_token %}
+        <h1 class="text-2xl font-bold mb-4 text-center">Team Registration Form</h1>
+        <label for="nama_tim" class="font-semibold">Team Name:</label>
+        <input class="border border-gray-300 rounded-md p-2" type="text" name="nama_tim" id="nama_tim">
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+            <label for="universitas" class="font-semibold">University Name:</label>
+            <input class="border border-gray-300 rounded-md p-2" type="text" name="universitas" id="universitas">
 
-</div>  
+            <button type="submit" class="bg-gray text-white py-2 px-4 rounded-md hover:bg-blue-600">Submit</button>
+    </form>
+
+</div>
 
 {% endblock content %}

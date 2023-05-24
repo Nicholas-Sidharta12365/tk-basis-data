@@ -5,23 +5,27 @@
 {% endblock meta %}
 
 {% block content %}
+{% if message %}
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center" role="alert">
+    <span class="block sm:inline">{{ message }}</span>
+</div>
+{% endif %}
   <h1 class="text-2xl font-bold mb-4 text-center">Mengelola Pelatih</h1>
-  
-  <form class="text-center">
+
+  <form method="POST" action="/mengelola/register_trainer/" class="text-center">
+    {% csrf_token %}
     <div class="mb-4">
-      <label class="block text-gray-700 font-bold mb-2" for="player">Pelatih</label>
-      <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="player" name="player">
+      <label class="block text-gray-700 font-bold mb-2" for="id">Pelatih</label>
+      <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="id" name="id">
         <option value="">-- Pilih Pelatih --</option>
-        <option value="John">John</option>
-        <option value="Doe">Doe</option>
-        <option value="Jane">Jane</option>
-        <option value="Smith">Smith</option>
-        <option value="Mary">Mary</option>
+        {% for pelatih in list_pelatih %}
+        <option value="{{ pelatih.id_pelatih }}">{{ pelatih.nama_depan }} {{pelatih.nama_belakang}} - {{pelatih.sp}}</option> 
+        {% endfor %}
       </select>
     </div>
 
     <div class="mb-4">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
         Simpan
       </button>
     </div>
