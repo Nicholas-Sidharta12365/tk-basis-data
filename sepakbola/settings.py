@@ -67,6 +67,7 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
+CSRF_TRUSTED_ORIGINS = ['https://tk4-kelompok12.up.railway.app/', 'https://www.tk4-kelompok12.up.railway.app/']
 
 ROOT_URLCONF = 'sepakbola.urls'
 
