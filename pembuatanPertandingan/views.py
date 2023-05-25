@@ -99,10 +99,10 @@ def index(request):
 
             # print('stadium: ' + stadium_id)
             # print('tanggal: ' + tanggal)
-            print('wasit utama: ' + wasit_utama)
-            print('wasit pembantu 1: ' + wasit_pembantu_1)
-            print('wasit pembantu 2: ' + wasit_pembantu_2)
-            print('wasit cadangan: ' + wasit_cadangan)
+            # print('wasit utama: ' + wasit_utama)
+            # print('wasit pembantu 1: ' + wasit_pembantu_1)
+            # print('wasit pembantu 2: ' + wasit_pembantu_2)
+            # print('wasit cadangan: ' + wasit_cadangan)
 
             query_insert = f"INSERT INTO sepak_bola.Pertandingan (id_pertandingan, start_datetime, end_datetime, stadium) VALUES ('{uuid_string}', '{tanggal} 14:00:00', '{tanggal} 16:00:00', '{stadium_id}')"
             cur.execute(query_insert)
@@ -232,8 +232,8 @@ def list_waktu(request):
     if request.method == 'POST':
         stadium = request.POST.get('stadium')
         tanggal = request.POST.get('tanggal')
-        print(stadium)
-        print(tanggal)
+        # print(stadium)
+        # print(tanggal)
         user = request.session.get('logged_user')
         
 
@@ -316,7 +316,7 @@ def create_pertandingan(request):
         phone = None
         email = None
         address = None
-        role = None
+        role = table
         status = None
         rank = None
         meeting = None
@@ -327,7 +327,7 @@ def create_pertandingan(request):
 
 
         context = {}
-        context.update(get_role_context(role))
+
 
         stadium_id = request.POST.get('stadium')
         tanggal = request.POST.get('tanggal')
@@ -365,8 +365,8 @@ def create_pertandingan(request):
                 role = table
                 context.update({"tim": result})
 
-        pprint(context.get('wasit'))
-        pprint(len(context.get('wasit')))
+        # pprint(context.get('wasit'))
+        # pprint(len(context.get('wasit')))
 
         # pprint(context.get('tim'))
         # pprint(len(context.get('tim')))
@@ -374,7 +374,7 @@ def create_pertandingan(request):
 
         cur.close()
         conn.close()
-
+        context.update(get_role_context(role))
 
 
         return render(request, 'create_pertandingan.html', context)
