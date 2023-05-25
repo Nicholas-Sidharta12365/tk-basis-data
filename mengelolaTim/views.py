@@ -28,6 +28,13 @@ def index(request):
     """)
     context = {
         'list_pemain': pemain,
+        'login_status': 'hidden',
+        'register_status': 'hidden',
+        'manage_pertandingan_status': 'hidden',
+        'pembelian_tiket_status': 'hidden',
+        'rapat_status': 'hidden',
+        'pembuatan_pertandingan_status': 'hidden',
+        'mulai_pertandingan_status': 'hidden'
     }
     pelatih = query(f"""
         SELECT id, nama_depan, nama_belakang, nomor_hp,email, alamat, spesialisasi
@@ -59,6 +66,15 @@ def delete_pelatih(request):
 
 def register_team(request):
     user = request.session.get('logged_user')
+    context = {
+        'login_status': 'hidden',
+        'register_status': 'hidden',
+        'manage_pertandingan_status': 'hidden',
+        'pembelian_tiket_status': 'hidden',
+        'rapat_status': 'hidden',
+        'pembuatan_pertandingan_status': 'hidden',
+        'mulai_pertandingan_status': 'hidden'
+    }
     if (request.method == 'POST'):
         nama_tim = request.POST.get('nama_tim')
         universitas = request.POST.get('universitas')
@@ -92,7 +108,17 @@ def register_player(request):
             return redirect('/auth/login')
         return redirect(f'/dashboard/')
     list_pemain = query(f''' SELECT * FROM PEMAIN WHERE nama_tim IS NULL ''')
-    context = {'list_pemain': list_pemain}
+    context = {'list_pemain': list_pemain,
+        'login_status': 'hidden',
+        'register_status': 'hidden',
+        'manage_pertandingan_status': 'hidden',
+        'pembelian_tiket_status': 'hidden',
+        'rapat_status': 'hidden',
+        'pembuatan_pertandingan_status': 'hidden',
+        'mulai_pertandingan_status': 'hidden'
+    }
+    
+    
     if (request.method == 'POST'):
         query(f''' UPDATE PEMAIN SET nama_tim = '{request.session.get('nama_tim')}' WHERE id_pemain = '{request.POST.get('pemain')}' ''')
         return redirect('/mengelola/')
@@ -113,7 +139,16 @@ def register_trainer(request):
     WHERE p.nama_tim IS NULL
     GROUP BY p.id_pelatih, nama_depan, nama_belakang ''')
 
-    context = {'list_pelatih': list_pelatih}
+    context = {'list_pelatih': list_pelatih,
+                'login_status': 'hidden',
+                'register_status': 'hidden',
+                'manage_pertandingan_status': 'hidden',
+                'pembelian_tiket_status': 'hidden',
+                'rapat_status': 'hidden',
+                'pembuatan_pertandingan_status': 'hidden',
+                'mulai_pertandingan_status': 'hidden'
+    
+    }
     if (request.method == 'POST'):
         print(request.POST.get('id'))
         response = query(f''' UPDATE PELATIH SET nama_tim = '{request.session.get('nama_tim')}' WHERE id_pelatih = '{request.POST.get('id')}' ''')
