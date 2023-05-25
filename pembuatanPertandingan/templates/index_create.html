@@ -23,7 +23,17 @@
             {% for team in grup_a %}
                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                         <td class="px-6 py-4">{{ team.0 }} vs {{ team.1 }}</td>
-                        <td class="px-6 py-4"><a href="add/">Update</a> <a href="#">Delete</a></td>
+                        <td class="px-6 py-4">
+                        <form action="update/" method="post">
+                            {% csrf_token %}
+                            <input type="text" value="{{ team.2 }}" placeholder="{{ team.2 }}" name="idPertandingan" id="idPertandingan" style="display: none;">
+                            <button>Update</button>
+                        </form>
+                        <form action="delete/" method="post">
+                            {% csrf_token %}
+                            <input type="text" value="{{ team.2 }}" placeholder="{{ team.2 }}" name="idPertandingan" id="idPertandingan" style="display: none;">
+                            <button>Delete</button>
+                        </form>
                 </tr>
             {% endfor %}
         {% else %}

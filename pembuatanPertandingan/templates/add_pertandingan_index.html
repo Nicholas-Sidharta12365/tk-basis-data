@@ -5,20 +5,21 @@
 {% block content %}
 <h1 class="text-2xl font-bold mb-4 text-center">Pembuatan Pertandingan</h1>
 
-<form class="text-center" action="waktu/">
+<form class="text-center" action="create/" method="POST" autocomplete="off">
+    {% csrf_token %}
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="stadium">Stadium</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="stadium" name="stadium">
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="stadium" name="stadium" required>
             <option value="">-- Pilih Stadium --</option>
-            <option value="stadiumA">Stadium A</option>
-            <option value="stadiumB">Stadium B</option>
-            <option value="stadiumC">Stadium C</option>
-            <option value="stadiumD">Stadium D</option>
+            {% for st in stadium %}
+                <option value={{st.1}}>{{ st.0 }}</option>
+
+            {% endfor %}
         </select>
     </div>
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="tanggal">Tanggal</label>
-        <input type="date" name="tanggal" id="tanggal">
+        <input type="date" name="tanggal" id="tanggal" required>
 
     </div>
 

@@ -5,72 +5,70 @@
 {% block content %}
 <h1 class="text-2xl font-bold mb-4 text-center">Buat Pertandingan</h1>
 
-<form class="text-center" action="/creation">
+<form class="text-center" action="/creation/" method="POST" autocomplete="off">
+    {% csrf_token %}
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="wasitUtama">Wasit Utama</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitUtama" name="wasitUtama">
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitUtama" name="wasitUtama" required>
             <option value="">-- Pilih Wasit --</option>
-            <option value="wasit1">Wasit 1</option>
-            <option value="wasit2">Wasit 2</option>
-            <option value="wasit3">Wasit 3</option>
-            <option value="wasit4">Wasit 4</option>
+            {% for w in wasit %}
+                <option value={{w.0}}>{{ w.1 }} {{ w.2 }}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu">Wasit Pembantu</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu" name="wasitPembantu">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu1">Wasit Pembantu</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu1" name="wasitPembantu1" required>
             <option value="">-- Pilih Wasit --</option>
-            <option value="wasit1">Wasit 1</option>
-            <option value="wasit2">Wasit 2</option>
-            <option value="wasit3">Wasit 3</option>
-            <option value="wasit4">Wasit 4</option>
+            {% for w in wasit %}
+                <option value={{w.0}}>{{ w.1 }} {{ w.2 }}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu">Wasit Pembantu</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu" name="wasitPembantu">
+        <label class="block text-gray-700 font-bold mb-2" for="wasitPembantu2">Wasit Pembantu</label>
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitPembantu2" name="wasitPembantu2" required>
             <option value="">-- Pilih Wasit --</option>
-            <option value="wasit1">Wasit 1</option>
-            <option value="wasit2">Wasit 2</option>
-            <option value="wasit3">Wasit 3</option>
-            <option value="wasit4">Wasit 4</option>
+            {% for w in wasit %}
+                <option value={{w.0}}>{{ w.1 }} {{ w.2 }}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="wasitCadangan">Wasit Cadangan</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitCadangan" name="wasitCadangan">
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="wasitCadangan" name="wasitCadangan" required>
             <option value="">-- Pilih Wasit --</option>
-            <option value="wasit1">Wasit 1</option>
-            <option value="wasit2">Wasit 2</option>
-            <option value="wasit3">Wasit 3</option>
-            <option value="wasit4">Wasit 4</option>
+            {% for w in wasit %}
+                <option value={{w.0}}>{{ w.1 }} {{ w.2 }}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="timSatu">Tim 1</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timSatu" name="timSatu">
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timSatu" name="timSatu" required>
             <option value="">-- Pilih Tim --</option>
-            <option value="tim1">Tim A</option>
-            <option value="tim2">Tim B</option>
-            <option value="tim3">Tim C</option>
-            <option value="tim4">Tim D</option>
+            {% for t in tim %}
+                <option value="{{t.0}}">{{ t.0 }}</option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="timDua">Tim 2</label>
-        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timDua" name="timDua">
+        <select class="border rounded py-2 px-3 text-gray-700 leading-tight" id="timDua" name="timDua" required>
             <option value="">-- Pilih Tim --</option>
-            <option value="tim1">Tim A</option>
-            <option value="tim2">Tim B</option>
-            <option value="tim3">Tim C</option>
-            <option value="tim4">Tim D</option>
+            {% for t in tim %}
+                <option value="{{t.0}}">{{ t.0 }}</option>
+            {% endfor %}
         </select>
     </div>
+
+    <input type="text" value="{{ stadium_id }}" placeholder="{{ stadium_id }}" name="stadiumId" id="stadiumId" style="display: none;">
+    <input type="text" value="{{ tanggal }}" placeholder="{{ tanggal }}" name="tanggal" id="tanggal" style="display: none;">
 
 
     <div class="mb-4">

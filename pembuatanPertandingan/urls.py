@@ -8,6 +8,7 @@ urlpatterns = [
     path('', index, name='pembuatanPertandingan'),
     path('add/', add_pertandingan_index, name='add_pertandingan_index'),
     path('add/waktu/', list_waktu, name='list_waktu'),
-    path('add/waktu/create/', create_pertandingan, name='create_pertandingan'),
+    path('add/create/', create_pertandingan, name='create_pertandingan'),
+    path('delete/', delete_pertandingan, name='delete_pertandingan')
 
 ]
